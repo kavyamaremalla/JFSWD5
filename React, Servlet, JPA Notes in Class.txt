@@ -1,0 +1,134 @@
+JPA 
+  -> Java Persistance API
+
+  @NonNull -> it's from lombok and when you insert data through postman/swagger , you can send null but it gives you exception, fieldLevel
+  @Column -> you will get from hibernate., to insert into table, it gives exception, table level
+
+
+Logs: 
+
+Hibernate: create table users (id bigint not null auto_increment, email varchar(255) not null, first_name varchar(255) not null, last_name varchar(255) not null, primary key (id)) engine=InnoDB
+Hibernate: alter table users drop index UK_6dotkott2kjsp8vw4d0m25fb7
+Hibernate: alter table users add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email)
+
+spring JPA..
+
+Servlets: Java EE -> jsp, servlets(acts as an API/UI)
+
+Tomcat -> server, you can run your applications (Servlet)
+Catalina -> uses this servlet, jsp pages
+
+JSP -> Java Server Pages, server -> tomcat
+
+Steps : 
+1  --> created a servlet using maven archetype as webapp
+2  --> Downloaded a Apache Tomcat Server
+3  --> Installed a tomcat plugin in the IntelliJ
+4  --> Configured Tomcat and assosciated with your servlet application
+
+Custom servlet : 
+
+--> getEndpoint
+--> postEndpoint -> you can do valiations, you can save this body into db using jdbc, hibernate
+
+request -> servlet (servlet loads whole page) -> response
+
+drawbacks in servlet -> UI development --> js, angular, react, vue.js, node etc.. 
+
+ --> to split into multiple components and also to load only useful/required data/api..
+
+ React JS: introduced by Facebook
+
+ one page can have multiple components
+
+ Html elements 
+
+  . Nodes
+  . attributes, texts, elements
+
+  Vanila JS -> creating elements and textNodes
+
+
+
+React import statements ->
+
+developing -> development.js
+dom -> react-dom.development
+babel -> old JS to new JS
+
+    <script  src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script  src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+rendering ReactDom 
+react components -> function, class components.
+
+download node.js
+
+npm -> install packages using node package manager, npx -> executing the packages
+
+npx create-react-app NameOfYourApplication, if you face any issue for the first time -> npm init, npm install
+
+extensions -> react developer tools in chrome(inspection), in vs code: react es7 extension (code snipets)
+
+npm start
+
+default port -> 3000
+
+JSX -> javascript + xml
+
+{} -> assosciate your function
+
+ctrl + alt + r (windows) , ctrl + shift + r (mac) -> code snipet generation.. or simply type rafce
+
+For generating random numbers : Math.floor(Math.random() * 2);
+
+App ->
+header, content, footer
+
+content -> function calls, assosciate parameters, getEvents, rafce, converting to arrow function in case of event (callback function)
+
+React TODO, work out session.
+
+Load only single component -> John., Peter.. even if I don't refresh a page
+
+- state : React Hooks
+          - useState : can't use in a condition and can't use in a function..
+          - useReference :you can disable CSS/take a control over some component
+          - useEffect : when you need to load data only once, based on a dependency (condition)
+
+          reload only a single component , not whole page.. using this state
+
+To-Do List :
+
+created list of items using useState and iterated over each item, displayed description and added a delete button
+npm i react-icons --> you can download the react-icons and use them
+assosciated the checkbox, deleted icon with our data.. user inputs are considered
+
+-props :
+
+  info shared across can be distributed between parent & child, vice versa.. not between same level components
+
+  content -> app and again app -> footer.. complex task..
+
+Add Item to the List from UI :
+Search Item from the list
+
+useReference -> hook
+useEffect -> hook
+
+React Fragments <> </>
+
+Get api, using apiRequest..
+
+PUT and PATCH -> @PutMapping/@PatchMapping in boot..
+
+
+TO DO App:
+
+ToDo Full Stack app:
+ - UI, frontend using react -> you will define your backend calls
+ - boot, backend & connect to your db (sql/mongo)
+    - jdbc, spring data jpa, hibernate 
+ - db : create a table/collections : id, checked, description like your json
+    {"id":"3","checked":true,"description":"Git Task"}
