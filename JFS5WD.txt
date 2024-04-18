@@ -1,0 +1,633 @@
+JPA 
+  -> Java Persistance API
+
+  @NonNull -> it's from lombok and when you insert data through postman/swagger , you can send null but it gives you exception, fieldLevel
+  @Column -> you will get from hibernate., to insert into table, it gives exception, table level
+
+
+Logs: 
+
+Hibernate: create table users (id bigint not null auto_increment, email varchar(255) not null, first_name varchar(255) not null, last_name varchar(255) not null, primary key (id)) engine=InnoDB
+Hibernate: alter table users drop index UK_6dotkott2kjsp8vw4d0m25fb7
+Hibernate: alter table users add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email)
+
+spring JPA..
+
+Servlets: Java EE -> jsp, servlets(acts as an API/UI)
+
+Tomcat -> server, you can run your applications (Servlet)
+Catalina -> uses this servlet, jsp pages
+
+JSP -> Java Server Pages, server -> tomcat
+
+Steps : 
+1  --> created a servlet using maven archetype as webapp
+2  --> Downloaded a Apache Tomcat Server
+3  --> Installed a tomcat plugin in the IntelliJ
+4  --> Configured Tomcat and assosciated with your servlet application
+
+Custom servlet : 
+
+--> getEndpoint
+--> postEndpoint -> you can do valiations, you can save this body into db using jdbc, hibernate
+
+request -> servlet (servlet loads whole page) -> response
+
+drawbacks in servlet -> UI development --> js, angular, react, vue.js, node etc.. 
+
+ --> to split into multiple components and also to load only useful/required data/api..
+
+ React JS: introduced by Facebook
+
+ one page can have multiple components
+
+ Html elements 
+
+  . Nodes
+  . attributes, texts, elements
+
+  Vanila JS -> creating elements and textNodes
+
+
+
+React import statements ->
+
+developing -> development.js
+dom -> react-dom.development
+babel -> old JS to new JS
+
+    <script  src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script  src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+rendering ReactDom 
+react components -> function, class components.
+
+download node.js
+
+npm -> install packages using node package manager, npx -> executing the packages
+
+npx create-react-app NameOfYourApplication, if you face any issue for the first time -> npm init, npm install
+
+extensions -> react developer tools in chrome(inspection), in vs code: react es7 extension (code snipets)
+
+npm start
+
+default port -> 3000
+
+JSX -> javascript + xml
+
+{} -> assosciate your function
+
+ctrl + alt + r (windows) , ctrl + shift + r (mac) -> code snipet generation.. or simply type rafce
+
+For generating random numbers : Math.floor(Math.random() * 2);
+
+App ->
+header, content, footer
+
+content -> function calls, assosciate parameters, getEvents, rafce, converting to arrow function in case of event (callback function)
+
+React TODO, work out session.
+
+Load only single component -> John., Peter.. even if I don't refresh a page
+
+- state : React Hooks
+          - useState : can't use in a condition and can't use in a function..
+          - useReference :you can disable CSS/take a control over some component
+          - useEffect : when you need to load data only once, based on a dependency (condition)
+
+          reload only a single component , not whole page.. using this state
+
+To-Do List :
+
+created list of items using useState and iterated over each item, displayed description and added a delete button
+npm i react-icons --> you can download the react-icons and use them
+assosciated the checkbox, deleted icon with our data.. user inputs are considered
+
+-props :
+
+  info shared across can be distributed between parent & child, vice versa.. not between same level components
+
+  content -> app and again app -> footer.. complex task..
+
+Add Item to the List from UI :
+Search Item from the list
+
+useReference -> hook
+useEffect -> hook
+
+React Fragments <> </>
+
+Get api, using apiRequest..
+
+PUT and PATCH -> @PutMapping/@PatchMapping in boot..
+Post using apiRequest..
+
+
+TO DO App:
+
+ToDo Full Stack app:
+ - UI, frontend using react -> you will define your backend calls
+ - boot, backend & connect to your db (sql/mongo)
+    - jdbc, spring data jpa, hibernate 
+ - db : create a table/collections : id, checked, description like your json
+    {"id":"3","checked":true,"description":"Git Task"}    
+
+
+customHooks, axios client, useContext hook, react redux (surf this more)
+
+Spring  --> MongoDb :
+
+spring data mongodb dependency and other required dependencies
+
+app.properties, started mongo server
+
+CRUD : Post, Get, put, Delete
+
+
+context.xml -> constructor-args -> defining a constructor.. Mongo Template and Mongo Repository..
+
+
+Optimistic and Pessimistic locking
+
+Locking -> prevent parallel access of data..
+
+Optimistic -> will check that transaction is not modified, if you have any modification.. rollback locking
+
+pessimistic -> on memory level, you acquire a  lock on object.. isolation levels.. transaction level lock.. roll back if lock is for specific time
+
+
+Select , update.. Select for update..
+
+select * from student where TeacherId in (select TeacherId from Teacher) for update;
+
+implementing through Lock interface
+
+@Transaction -> read committed.. read uncommitted, non-repeatable, serialiazable
+
+ACID : Atomicity, Consistency, Isolation, Durability.. 
+
+DTO :  Data transfer object vs Entity (closely related to DB)
+
+controller -> DTO -> service -> entity -> repository
+
+traditional mapper --> model Mapper using bean and mvn dependency,
+exception handling in spring.
+
+
+existing response:
+
+{
+  "timestamp": "2024-04-03T05:54:59.471+00:00",
+  "status": 404,
+  "error": "Not Found",
+  "path": "/api/users/8"
+}
+
+{
+  "timeStamp": "2024-04-03T11:33:20.5718684",
+  "message": "User not found with id : 9",
+  "path": "uri=/api/users/9",
+  "errorCode": "Your UserId is not found, please check again"
+}
+
+GlobalExceptionhandling
+    - @ControllerAdvice at class level
+    - @ExceptionHandling at method level
+    - customising error using ErrorDetails
+
+
+spring validation:
+ - @Valid at controller level, 
+ - Validating request body (@NotEmpty, @Email, @Pattern) at DTO level
+
+ spring actuator : to monitor your application status
+  - /actuator : status of app
+  - /health - if app is up or not
+  - /info -additional info
+  - /beans - beans in an app
+  - /mappings - CRUD mappings
+  - /configprops - @Annotation, all config in app.props, other configurations
+  - /metrics - gives memory related info
+  - /env - it gives system configuration
+  - http://localhost:8080/actuator/shutdown : you can shutdown your application
+
+
+API Documentation
+
+book my show uses gpay.. which means internally book my show is using gpay's endpoints..
+
+razorpay/paypal..
+
+While documenting --> third party library/external - swagger or custom documentation 
+(just like the paypal : https://developer.paypal.com/docs/api/payments/v2/)
+
+Customising swagger -> on application level, on controller level, on schema level.
+
+Spring Security
+
+Why some users and passwords ? Why don't we share admin creds..
+
+-- you will know who has modified/used data..
+-- for access related -> only you will have limited previlages (read/write/update/delete)
+-- for safety..
+-- for visibility
+
+todo application :creating a simple application
+
+added spring boot security --> https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+
+start application -> generates a new password on every fresh start.. using this it also creates a sign in page, logout page, checks for credentials if they are correct or not.. 
+    - 401 unauthorized post man without unauthorized.
+    - providing security to your end point is called authentication.
+    - http://localhost:8080/yourEndpoint ->username is user and pwd is generated pwd asks for sign in browser, in case of postman, you pass authorization creds.
+    - http://localhost:8080/logout in browser, again call your endpoint, it asks for signin
+
+architecture -> client/ui -> filters (filter chain) -> controller/servlet
+
+SecurityFilterChain -> provides security to our application
+HttpSecurity -> configuration builder for our security
+httpSecurity.csrf().disable() -> Cross-Site Request Forgery
+authorize.anyRequest().authenticated(); -> authenticate all http requests in our application    
+.httpBasic(Customizer.withDefaults()); -> customize basic authentication 
+return httpSecurity.build(); -> build our httpSecurity and create a SecurityFilterChain
+
+removed props from app.props and added in SpringSecurityConfig..
+
+you will add privilages -> roles..
+
+admin -> create/read/update/delete
+user -> read
+
+authentication -> you are giving username and password.. your university student vs other university student , based on users-> 401 unauthorized
+authorization -> teachers vs students or any other role in your university.. based on role.. 403 forbidden
+
+@EnableMethodSecurity -> you can authorize requests at contoller method level..
+
+
+user - john -> roles as dev, devops, test
+dev role -> john, harry, ana.. different users
+test role -> john, peter, potter
+devops role -> john, parker, doe
+
+From above John can have multiple(many) roles and many roles have many users
+one user can have many roles and one role can be assigned to many users
+
+user - role -> ManytoMany
+1    -  1
+2    -  2
+
+
+Check from db.
+
+CustomAuthenticationServiceProvider --
+ui -> get username, password.. call save userRepository.. and save in respective table
+
+AuthenticationFilter -> AuthenticationManager -> ProviderManager -> AuthenticationProvider -> DaoAuthenticationProvider -> UserDetailsService
+
+We customised this authentication manager
+
+
+JWT -> JSON WEB TOKEN -> hashed token, used to authenticate API's... we will generate the tokens..
+
+I will generate a jwt token using my credentials and you can hit your APIs using this jwt token instead of username and password..
+
+Added a post method.. to generate a jwt token
+
+io.jsonwebtoken, here JWTUtil.java -> generating a token, validate, retrieve userName, check if your credentials/jwt is expired, claims..
+
+spring context -> build all your beans Similarly in security context , where you build your filters
+
+test1 : wrong creds and requested jwt -> 403 forbidden
+test2 : gave correct creds of admin and our app generated jwt token
+test3 :  call a get endpoint and give some wrong jwt token.. 
+test4: gave correct jwt and api gave response
+test5 : create a jwt token with user creds and hit a post endpoint..
+test6 : with admin creds, accessed post endpoint and data is created
+test7: when you hit jwt endpoint with user/admin creds.. response differs for every hit
+test8: when you hit with expired token : 403 forbidden
+
+******* MICROSERVICES :::::::::
+
+
+Monolithic -> we had only app., all the controllers in a single application..
+
+amazon -> product search and product payment -> 10k users.. if payment module fails/some bean exception during app start-up
+
+[ product search and product payment ], [ product search and product payment ], [ product search and product payment ]
+
+during sale -> 1billion users..
+
+microservice -> spearate service for search and separate service for payment.. n number of services..
+
+product search -> port 8080 -> ms1
+product payment -> port 9090/8081 -> ms2
+
+Pros of microservices MS ->
+
+. easy to scale
+. easy to test and maintain our code
+. one ms will do independent and unique function
+. search -> boot application., payment -> develop using a node..
+. each ms is independent of technology..
+. search service-> can run on sql and payment service can run on no-sql(mongo)
+
+-> different technologies and different databases..
+
+
+. one service can depend on other ms
+
+Hybrid architecture -> monolithic + microservices : Real-world example : Pay-Pal
+
+ms1 -> ms2 -> Can communicate/speak to each other.. Microservice Communication.. 
+
+                                                    Types : async : no waiting, all threads go parallely
+                                                            sync : search will wait for payment service
+
+
+ ms1 -> Mysql ; ms2-> mongo .... msn service -> postgres sql        
+
+ms1 -> 8080; security and ms2 -> 8080 (already someone is using the port) jpa , moved to 8081., ms3 -> boot project, port is 8089..
+
+100 ports -> maintain/track the ports ? -> even from UI it's difficult -> API Gateway..
+
+
+                Client(UI).. Server .. Eureka
+
+
+
+
+
+
+
+
+
+
+
+    ms1             ms2          ms3 --> API Gateway -> Fwd requests to respective microservices
+
+
+
+    Circuit Breaker Pattern..
+
+app.props -> configuration -> 100 ms and 100 properties -> Config Server, stores the configuration details of your ms.
+
+
+instance of a MS -> copy of your ms/version -> 100 instance for a MS
+
+product ms -> order, search, payment apps
+
+app -> can call multiple MS/instances -> difficult to track.. ms & its instances -> Service Registry & Discovery like your API Gateway
+
+to track API call -> see what's happening inside the call -> distributed tracing..
+
+
+spring cloud -> what we all saw above + additional features..
+
+
+Define your custom port -> server.port=9090 in app.properties
+
+employee service (ms1), department service(ms2).. -> different databases for both service
+
+return departmentCode in employeeResponse --> requirement
+
+ms Communication:
+    - Rest Template : status, headers, body..
+    - spring cloud openfeign library
+    - webclient library
+
+
+
+  Custom Response :
+
+  {
+    "id": 1, --> employee
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johnDoe@gmail.com",
+
+    "id" : 1, --> department
+    "departmentName": "CSE",
+    "departmentDescription": "Computer Science Engineering",
+    "departmentCode": "CS"
+}  
+
+Service Registry: ms and it's instances it will register
+
+Netflix has their own service registry -> Eureka.. server and client.. Now it's a public server
+
+manage dependencies in pom.xml
+
+create a project for eureka server -> in app -> @EnableEurekaServer
+in props : 
+
+spring.application.name=SERVICE-REGISTRY
+
+server.port = 8761
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+
+
+In ms1 & ms2 -> added a eureka client dependency and in app.props : eureka.instance.client.serverUrl.defaultZone=http://localhost:8761/eureka
+
+Eureka Server -> service discovery
+
+target folder -> .class files, which are read only files..
+
+.java -> converting .class
+
+mvn clean install.. -DskipTests = true
+
+mvn clean -> delete your target folder
+install -> will run all the profiles of maven
+validate -> validates your app if everything is fine
+compile -> check for compilation errros and genearte a target
+test -> junit tests
+package -> tries to execute all the phases till package
+
+genrates a jar -> from pom.xml whatever artifact id and version, will be picked and a jar is created..
+
+target -> run your application using jar
+
+PS C:\Users\kavya\JFSWD5\microservices-demo> cd .\department-service\target\
+PS C:\Users\kavya\JFSWD5\microservices-demo\department-service\target> java -jar department-service-0.0.1-SNAPSHOT.jar
+
+java -jar -Dserver.port=8082 department-service-0.0.1-SNAPSHOT.jar --> define your port
+
+LoadBalancing -> Call the employee service, ms communication.. if one of ports is shut down, you will get data from other port
+                8080 --> 5 requests : instance 1
+                8082  --> 5 requests : instance 2
+
+Eureka client can distribute load among the ports --> LB
+
+Feign client reads the name of applications and brings data : ApiClient (name) should be same as your application name
+
+API Gateway -> based on user request, route to respective service..
+
+api gateway -> eureka/service-registry -> route to our applications
+
+config server -> maintains the configurations..
+
+config server -> eureka(service-registry) (info about microservice instance)-> ms (config,eureka clients), we maintained a git repo to store our application configurations(app.properties)
+
+A server will be used by clients
+
+When you change something in your config server: you can just call http://localhost:yourPortNumber/actuator/refresh
+
+Instead of calling refresh and changing ports, we use messaging to broadcast your messages.
+
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management --> install docker desktop and through cmd this command to start your rabbitmq
+
+spring bus -> message broker(rabbitMQ, kafka, ApacheMQ.. etc)
+
+bus refresh -> on any port of your ms in the bus...all ports will be refreshed
+
+http://localhost:portNumberOfAnyMSInYourWholeApplication/actuator/busrefresh --> it will restart all the app.props for all microservices..
+
+Distributed tracing -> multiple tools -> paid(datadog, relic) and free tools(zipkin or micrometer).. 
+
+Dependencies:
+
+<!-- https://mvnrepository.com/artifact/io.micrometer/micrometer-observation -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-observation</artifactId>
+            <version>1.12.5</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.micrometer/micrometer-tracing-bridge-brave -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing-bridge-brave</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.zipkin.reporter2/zipkin-reporter-brave -->
+        <dependency>
+            <groupId>io.zipkin.reporter2</groupId>
+            <artifactId>zipkin-reporter-brave</artifactId>
+            <version>2.17.2</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/io.github.openfeign/feign-micrometer -->
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-micrometer</artifactId>
+            <version>13.1</version>
+            <scope>test</scope>
+        </dependency>
+
+
+ Run zipkin docker command: docker run -d -p 9411:9411 openzipkin/zipkin
+ 
+ see logs : http://localhost:9411/zipkin/ --> hit any endpoint..
+
+ call get employee service -> make sure your dept service is down.. 500 internal server error..
+
+        Circuit Breaker Pattern.. aop and circuit breaking..
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-circuitbreaker-resilience4j -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>3.2.4</version>
+        </dependency>
+
+
+@Circuitbreaker and called a default method/fallback method..
+
+
+**************** UNIT TESTING **********************
+
+public void numberOperations(a, b){
+    summation(a, b); //assume this block is working fine using a mock object/dummy object... Mock framework
+    factorial(a, b);
+    //some logic like if summ is > 6 throw exception
+}
+
+//dev, test/qa env, pre-prod and prod
+
+expected should be equal to actual code..
+
+java(junit), angular, react, other js frameworks.. karma,jasmine,jest..
+
+juinit tests fails --> mvn build also fails..
+
+tools -> sonarqube.. to check the coverage of junit and other monitoring things..
+if your sonar check.. fails --> mvn build fails..
+
+jacoco plugin for coverage..
+
+concatente -> firstName  + lastName..
+
+check if two objects are string..
+check if it's concatinating fName + lName instead of lName + fName..
+check if my names are null..
+
+add numbers ->
+
+type of number,
+combo of numbers and other types,
+check null,
+decimal, adding or subracting or performing any other operation,
+negative numbers,
+0.87, 0.82 -> how it behaves
+
+if(null!=fName || null!=lName){
+    //test cases for a block -> conditional coverage..
+    fName == null and lName != null -> 25%
+    fName != null and lName == null -> 25%
+    fName == null and lName == null -> 25%
+    fName != null and lName !=null  -> 25%
+}
+
+atleast 80% of you class should be covered with test cases.. orelse build fails... TDD and BDD..
+
+given, when, then.. given an object when performing through db, then returning some object..
+
+@Test..
+@InjectMocks ==> to which ever class you're testing
+@Mock ==> other @Autowired/used in your injected class 
+
+test cases for implementation classes not to a interface..
+
+Repo test -> @DataJpaTest, ctrlr -> @WebMVCTest
+
+class -> 10 test methods., beforeAll once before all test cases execution, this will start -> called once
+class -> 10 test methods., beforeEach -> called everytime before each test case --> called 10 times
+
+class -> afterEach, afterAll
+
+given, verify, doNothihng/willDoNothing, mockito and bdd mockito
+
+
+*************** Reactive Streams and WebFlux ******************************
+
+API Request -> Dispatcher Servlet(default, 200 requests will be allocated to 200 threads at a single time) -> Controller -> Service -> Repo -> back to the flow and gives you some response... you can configure requests..
+
+1 thread is blocked for a API request.. Blocking or synchronous model --> over come -> reactive streams in boot
+
+reactive stream : API Request -> event loop -> available threads (Non-blocking).. promise in JS.. -> process request:
+
+- publisher --- [publish events : db/api]
+- subscriber --- [subscribe events, ctrls the events.. will listen to publisher]
+- subscription --- listen to subscriber..
+
+Flux and Mono..
+
+flux -> 0 to n responses
+Mono -> either 0 or 1 response
+
+developed an application with mongo and spring reactive stack
+
+1 -> created a react todo app - crud..
+2 -> created a login page and resgister user API (spring security).. axios interceptors for jwt token, auth service(react)
+3 -> interaction between your ui and backend, login and logout, private routing, conditional rendering :: authorization based on user and admin..
