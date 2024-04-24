@@ -631,3 +631,72 @@ developed an application with mongo and spring reactive stack
 1 -> created a react todo app - crud..
 2 -> created a login page and resgister user API (spring security).. axios interceptors for jwt token, auth service(react)
 3 -> interaction between your ui and backend, login and logout, private routing, conditional rendering :: authorization based on user and admin..
+
+spring batch & graph ql, aws console
+
+1. Salary -> last working day/first day of every month.. scheduled jobs
+2. user table -> changed to employee table(same/diff db) -> migration
+3. emp from comp y -> data (pf data, remarks etc csv file)., our company x -> import the csv from y comp and process this csv..
+
+comp x -> import csv -> write to db
+comp y -> export csv -> from db
+
+Steps : 
+
+1. reader : read values/data from db/csv
+2. processor : logical operations (like your service layer in API)
+3. Writer : writes queries into your database., you can define queries or SP
+
+gradle : groovy script, this is supported by gradle groovy..
+
+env - dev, qa, preprod, prod : you build your applications using jenkins into partivular env or server..
+
+csv -> coma separated value
+
+GraphQL : 
+
+request (100 fields) -> REST API -> Response.. 0.5sec * 100 fields -> 5sec
+
+facebook  -> graphQl -> news feed..
+
+100(fields) -> required fields -> process the response.. -> 0.5*5 -> 0.25sec..
+
+Full stack application walkthrough -> cache(you can store jwt tokens), make app more user friendly
+
+cloud -> host your applications..
+
+    AWS, Microsoft Azure, Google cloud, IBM
+    firebase, hostinger
+
+sql -> RDS
+ec2 instance -> put your Elastic Bean Stalk -> web-application
+react app -> s3 bucket
+
+***************** SPRING JMS *******************
+
+MS Communication.. messaging rabbitmq/kafka..
+
+MS1 -> rest API(or message) -> MS2    
+
+Message driven communication in case of message
+
+MS1 ----> ms2 and MS1 ---> ms3... One MS to many MSs...
+
+one publisher and multiple subscribers..
+
+1 -> 1 --> Queue
+1 -> many service -> Topic
+
+
+Revision of Spring Topics: https://spring.io/projects
+
+spring framework -> applicationContext.xml, spring IOC(Inversion of Control), Dependency Inversion, Beans, bean lifecycle
+spring mvc -> model, view , controller, how is tomcat embedded?, pom.xml, @Value, @Autowired
+spring boot -> diff btwn boot and mvc, annotations in boot(@SpringBootApplication)
+spring batch -> reader, processor, writer,
+spring security -> authentication, jwt
+spring cloud -> api gateway, config, circuit breakers, service discovery(eureka server),bus
+monolithic vs microservices (soap, rest, graphQL), hybrid
+spring jms -> one to many communication..
+webservice vs mobile service..
+
