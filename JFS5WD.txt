@@ -699,4 +699,74 @@ spring cloud -> api gateway, config, circuit breakers, service discovery(eureka 
 monolithic vs microservices (soap, rest, graphQL), hybrid
 spring jms -> one to many communication..
 webservice vs mobile service..
+DS & Algorithms, Design patterns, SOLID principles, patterns in microservices (Richardson pattern)
+SCRUM/Agile  methodologies -> in case of experienced
 
+
+DS & Algo: Design patterns -> study
+
+DS : how your data is arranged in your memory...
+
+    - array
+    - list
+    - set
+    - map
+    - queue, dequeue
+    - stack
+  Spcl
+    - linkedlist
+    - tree
+    - graph
+    - heap  
+
+Algorithms -> way of approaching a soltn.. among those you should choose efficient way of solving a problem..(time and space complexity) -> binary, bubble, merge array, merge sort, quick sort
+
+    - searching
+    - sorting
+
+Recusrion -> calling a function itself, advanced DS and algo will be using this mostly
+
+add(5) -> add(4) ------> add(0) -> stops execution
+factorial using recursion..
+
+time complexity -> interms of time, how fast an app runs
+space complexoty -> interms of memory, how much mem is being consumed..
+
+linear search -> 10 or million times -> O(n), 
+binary search -> 4 times -> fast than linear -> log.. log2^3-1.. 3log2 -1 -> 3logn (n = 7) -> O(log n)
+loop in a loop, nested -> O(n) * O(n) -> O(n2) n square -> O(n^nested loops) -> nested
+mutiple loops, not nested -> O(n) + O(n) -> O(2n) => O(n)
+
+space -> memory
+
+loop -> O(1) -> constant
+arr2 -> redeclared array -> O(n)
+
+Efficiency :
+
+time : O(log n) > O(n) < O(n^n)
+space: O(1) > O(2)
+
+technique1 -> time: O(log n) and  space : O(n)
+technique2 -> time : O(n2) and space : O(1)
+
+choose -> technique1
+
+linear search -> traditional way
+binary search -> divide and low, high, mid..
+bubble sort -> temp variable and nested loop, swaps
+merge sort -> divide and merge -> binary + merging..
+quick sort -> divides and swaps, pivot (primary element to make comparision for your remaining elements & send left or right)
+
+team -> n number of ppl -> dev, testers, devops, architects, manager, cloud team.. scrum master..
+    methodologies -> to progress your work, to keep a track of everything.. sprints (15 days/frequency of days) or iterations
+        - agile 
+        - waterfall     
+
+JIRA/hp-alm/azure ADO repo -> project management tool   
+jenkins -> pipeline to manage our applications, using this tool our applications will be built to cloud..
+    - select your app, select environment, select version, you can check build logs... 
+    - you build pipeline using groovy script..
+
+engine once, brakes once..pieces.. it is good to show a working model.. mvp.. poc.. 
+    - based on f/b you will modify..         
